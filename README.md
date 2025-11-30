@@ -61,7 +61,4 @@ Overall, this project was a valuable learning experience, and I look forward to 
 ### 🖼 Dashboard Preview
 
 **Dashboard Snapshot**  
-<img width="1000" alt="Dashboard Preview" src="https://github.com/user-attachments/assets/TBD" />
-
-<!-- **Data Model**  
-<img width="1000" alt="Data Model" src="https://github.com/user-attachments/assets/7ba74d11-18c3-4381-99d7-586c8b2d1894" />-->
+<img width="1000" alt="Dashboard Preview" <img width="1630" height="923" alt="rts" src="https://github.com/user-attachments/assets/0e3690b2-2d81-43a0-8b27-4dc89ab863aa" />

@@ -54,6 +54,37 @@ Average Missions per Year - *Returns the average number of successfull missions 
 Average Missions per Year = DIVIDE([Total Successful Missions],DISTINCTCOUNT( space_missions[Year]))
 ```
 
+Success Rate - *Percentage of successful missions.*
+```DAX
+Success Rate = [Total Successful Missions]/[Total Missions]
+```
+
+Total Missions - *Total number of missions.*
+```DAX
+Total Missions = count(space_missions[Mission])
+```
+
+Total Price (USD) - *Total cost of missions.*
+```DAX
+Total Price (USD) = SUM(space_missions[Price])
+```
+
+Placeholder measures (To be added)
+
+
+
+Total Successful Missions = CALCULATE(
+    COUNTROWS('space_missions'),
+    'space_missions'[Mission Status] = "Success"
+)
+Total Unsuccessful Missions = CALCULATE(
+    COUNTROWS('space_missions'),
+    'space_missions'[Mission Status] <> "Success"
+)
+Year = YEAR(space_missions[Date])
+
+
+
 ---
 
 ### 🔍 Key Insights

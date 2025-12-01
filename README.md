@@ -2,11 +2,12 @@
 
 
 ### 📖 Overview
-This project was my entry for the [**Maven Return to Space Challenge**](https://mavenanalytics.io/challenges/maven-return-to-space-challenge) hosted by Maven Analytics.  
+This dashboard was created for the Maven Analytics Return to Space challenge to analyze global space missions from 1957 to 2022. The report evaluates mission volume, reliability, cost efficiency and top launch vehicles across countries, organizations and time periods.
 
-I built a Power BI dashboard to explore the evolution of global space missions from 1957 to 2022 between different countries, companies, and rockets.
+The dashboard uses visual storytelling to highlight trends without relying on long-form text. Launch activity, success rate, leading rockets and regional performance can be understood at a glance. The data also reflects how the space industry grew during the Cold War and later into a wider international effort.
 
-The goal was to create a **single-page visual story** highlighting mission growth, success rates, leading countries and organizations, and the evolution of rocket technology.
+Challenge link: 
+[https://mavenanalytics.io/challenges/maven-return-to-space-challenge](https://mavenanalytics.io/challenges/maven-return-to-space-challenge)
 
 ---
 
@@ -33,12 +34,22 @@ The goal was to create a **single-page visual story** highlighting mission growt
 - Raw Data Dictionary [space_missions_data_dictionary.csv](https://github.com/jtschroer/Maven_Challenge_2025_11/blob/main/space_missions_data_dictionary.csv)
 - Power BI Desktop [return_to_space.pbix](https://github.com/jtschroer/Maven_Challenge_2025_11/blob/main/return_to_space.pbix)
 
+---
+
+### ⚙️ Data Preparation & Transformation (Power Query)
+Data transformation focused on cleaning and standardizing key fields to ensure accuracy and readiness for analysis.
+
+* **Geospatial Wrangling:** The composite `Location` field was split by delimiter, requiring a **conditional custom column** to reliably extract the **`Country`**. Manual text remediation (Find and Replace) was performed on specific sub-national entries (e.g., "Alaska") to enforce consistent country naming for mapping accuracy.
+* **Financial Standardization:** The decimal values in the **`Price`** column (representing millions) were converted to their full monetary value by multiplying them by 1,000,000, ensuring accurate total cost calculations.
+* **Model Optimization:** Unused columns were removed to simplify the data model and improve query performance.
+
 
 ---
 ### 🧩 DAX Measures  
 Click to expand.
-<details>
-Average Mission Cost - *Returns the average cost of missions while excluding blanks.*
+<details><BR>
+
+- Average Mission Cost - *Returns the average cost of missions while excluding blanks.*
 ```DAX
 Average Mission Cost =
 DIVIDE(
@@ -49,65 +60,73 @@ DIVIDE(
     )
 )
 ```
+<BR>
 
-Average Missions per Year - *Returns the average number of successfull missions per year.*
+- Average Missions per Year - *Returns the average number of successfull missions per year.*
 ```DAX
 Average Missions per Year = DIVIDE([Total Successful Missions],DISTINCTCOUNT( space_missions[Year]))
 ```
+<BR>
 
-Success Rate - *Percentage of successful missions.*
+- Success Rate - *Percentage of successful missions.*
 ```DAX
 Success Rate = [Total Successful Missions]/[Total Missions]
 ```
+<BR>
 
-Total Missions - *Total number of missions.*
+- Total Missions - *Total number of missions.*
 ```DAX
 Total Missions = count(space_missions[Mission])
 ```
+<BR>
 
-Total Price (USD) - *Total cost of missions.*
+- Total Price (USD) - *Total cost of missions.*
 ```DAX
 Total Price (USD) = SUM(space_missions[Price])
 ```
+<BR>
 
-Placeholder measures (To be added)
-
-
-
+-  Total Successful Missions - *Total number of sucessful missions.*
+```DAX
 Total Successful Missions = CALCULATE(
     COUNTROWS('space_missions'),
     'space_missions'[Mission Status] = "Success"
 )
+```
+<BR>
+
+-  Total Unsuccessful Missions - *Total number of unsucessful missions.*
+```DAX
 Total Unsuccessful Missions = CALCULATE(
     COUNTROWS('space_missions'),
     'space_missions'[Mission Status] <> "Success"
 )
+```
+<BR>
+
+-  Year - *Year of mission.*
+```DAX
 Year = YEAR(space_missions[Date])
+```
 </details>
 
 
 ---
 
 ### 🔍 Key Insights
-- Winning Team: USA had 1,468 successful missions, followed closely by Russia with 1,416.
-- Top Company: RVSN USSR leads with 1,777 successful launches, significantly ahead of competitors.
-- Golden Era: The 1970s had the highest number of missions (1,012), driven primarily by Russia’s 604 launches.
-- Mission Success: Humanity achieved an overall success rate of 92.7%, maintained steadily since the 1980s.
-- Best Shuttle: Cosmos-3 (11K65M) had the highest number of successful missions; Voskhod was second.
-- Cost Efficiency: Rocket 3 had the lowest cost per mission at $2.5M; Ceres-1 was nearly twice as expensive at $4.9M.
+- The United States and Russia account for the highest number of successful missions with totals that are very close to each other.
+- The 1970s had the greatest launch volume on record. Increased Russian activity during this period contributed heavily to the spike.
+- RVSN USSR ranks as the highest volume launch organization overall. Its mission count stands well above other agencies or companies in the dataset.
+- Global success rates settled at roughly 93 percent starting in the 1980s, which suggests significant improvements in reliability over time.
+- Cosmos 3 (11K65M) shows the highest number of successful launches among all rockets tracked, with Voskhod placed second.
+- Rocket 3 demonstrates the strongest cost performance based on cost per mission, and it operates at a lower average cost than comparable launch systems.
 
 ---
 
 ### 📝 Lessons Learned
-This was my first challenge project, and I really enjoyed completing it. Although the challenge was intended to take a month, I completed it in just two days after discovering it shortly before the deadline.
+This project helped sharpen my approach to dashboard clarity and visual communication. My initial design relied heavily on text to explain findings, but through iteration I shifted toward more visual storytelling, making the insights easier to understand at a glance. I also discovered how important canvas dimensions are when exporting to PDF, as a non-standard size resulted in distortion during export.
 
-The project was a great refresher on element placement. I focused heavily on ensuring even spacing around edges and between visuals, and I learned that shift-arrow movement depends on zoom level. Aligning everything perfectly required several attempts, but the experience will make future layout adjustments much smoother.
-
-Capturing the final screenshot proved challenging due to my unconventional canvas size; exporting as a PDF skewed the report’s dimensions. For future projects, I plan to stick with more standard canvas sizes.
-
-Lastly, I noticed areas for improvement in the layout: some text blocks are larger than necessary, and the “Total Successful Missions by Decade” visual is somewhat redundant.
-
-Overall, this project was a valuable learning experience, and I look forward to applying these lessons in the December challenge.
+During development I experimented with parameter-driven filtering, but ultimately replaced it with streamlined Top 10 visuals. This not only improved usability, but also reduced development complexity and kept the report focused on the highest-value comparisons.
 
 ---
 

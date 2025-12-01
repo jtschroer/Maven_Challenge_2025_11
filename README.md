@@ -61,4 +61,4 @@ Overall, this project was a valuable learning experience, and I look forward to 
 ### 🖼 Dashboard Preview
 
 **Dashboard Snapshot**  
-<img width="1000" alt="Dashboard Preview" alt="Dashboard Screenshot" src="https://github.com/user-attachments/assets/0e3690b2-2d81-43a0-8b27-4dc89ab863aa" />
+<img width="1000" alt="Dashboard Preview" alt="Dashboard Screenshot" src="https://github.com/user-attachments/assets/829578ae-6c3e-49fb-86f2-c84f01492692" />

@@ -16,7 +16,7 @@ Challenge link:
 - Which rocket (by name, cost, or size) is the true champion of space? 
 - Which decade or time period had the highest success rate, the most launches, or the most bang-for-its-buck in terms of space exploration?
 - Which country or organization has quietly dominated the space race over the long term, and what does their winning strategy look like?
-- ...or anwser a compelling question of my own.
+- ...or answer a compelling question of my own.
 
 ---
 
@@ -62,7 +62,7 @@ DIVIDE(
 ```
 <BR>
 
-- Average Missions per Year - *Returns the average number of successfull missions per year.*
+- Average Missions per Year - *Returns the average number of successful missions per year.*
 ```DAX
 Average Missions per Year = DIVIDE([Total Successful Missions],DISTINCTCOUNT( space_missions[Year]))
 ```
@@ -86,7 +86,7 @@ Total Price (USD) = SUM(space_missions[Price])
 ```
 <BR>
 
--  Total Successful Missions - *Total number of sucessful missions.*
+-  Total Successful Missions - *Total number of successful missions.*
 ```DAX
 Total Successful Missions = CALCULATE(
     COUNTROWS('space_missions'),
@@ -95,7 +95,7 @@ Total Successful Missions = CALCULATE(
 ```
 <BR>
 
--  Total Unsuccessful Missions - *Total number of unsucessful missions.*
+-  Total Unsuccessful Missions - *Total number of unsuccessful missions.*
 ```DAX
 Total Unsuccessful Missions = CALCULATE(
     COUNTROWS('space_missions'),

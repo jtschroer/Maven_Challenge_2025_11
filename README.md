@@ -33,13 +33,26 @@ The goal was to create a **single-page visual story** highlighting mission growt
 - Raw Data Dictionary [space_missions_data_dictionary.csv](https://github.com/jtschroer/Maven_Challenge_2025_11/blob/main/space_missions_data_dictionary.csv)
 - Power BI Desktop [return_to_space.pbix](https://github.com/jtschroer/Maven_Challenge_2025_11/blob/main/return_to_space.pbix)
 
+
 ---
+### 🧩 DAX Measures  
 
-### 🧩 Core DAX Measures
+Average Mission Cost - *Returns the average cost of missions while excluding blanks.*
+```DAX
+Average Mission Cost =
+DIVIDE(
+    SUM(space_missions[Price]),
+    CALCULATE(
+        COUNTROWS(space_missions),
+        NOT(ISBLANK(space_missions[Price]))
+    )
+)
+```
 
-| Measure | Formula | Description |
-|---|---|---|
-| Total Launches | `COUNTROWS(SpaceMissions)` | Total recorded missions |
+Average Missions per Year - *Returns the average number of successfull missions per year.*
+```DAX
+Average Missions per Year = DIVIDE([Total Successful Missions],DISTINCTCOUNT( space_missions[Year]))
+```
 
 ---
 

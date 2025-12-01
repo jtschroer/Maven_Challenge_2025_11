@@ -36,7 +36,8 @@ The goal was to create a **single-page visual story** highlighting mission growt
 
 ---
 ### 🧩 DAX Measures  
-
+Click to expand.
+<details>
 Average Mission Cost - *Returns the average cost of missions while excluding blanks.*
 ```DAX
 Average Mission Cost =
@@ -82,7 +83,7 @@ Total Unsuccessful Missions = CALCULATE(
     'space_missions'[Mission Status] <> "Success"
 )
 Year = YEAR(space_missions[Date])
-
+</details>
 
 
 ---

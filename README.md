@@ -27,6 +27,14 @@ The goal was to create a **single-page visual story** highlighting mission growt
 
 ---
 
+### Repo Files ###
+
+- Raw Data [space_missions.csv](https://github.com/jtschroer/Maven_Challenge_2025_11/blob/main/space_missions.csv)
+- Raw Data Dictionary [space_missions_data_dictionary.csv](https://github.com/jtschroer/Maven_Challenge_2025_11/blob/main/space_missions_data_dictionary.csv)
+- Power BI Desktop [return_to_space.pbix](https://github.com/jtschroer/Maven_Challenge_2025_11/blob/main/return_to_space.pbix)
+
+---
+
 ### 🧩 Core DAX Measures
 
 | Measure | Formula | Description |
